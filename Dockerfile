@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM node:20-alpine AS build
+FROM node:20 AS build
 WORKDIR /app
 
 # Install dependencies
@@ -10,7 +10,7 @@ RUN corepack enable && corepack prepare pnpm@9.12.2 --activate && pnpm install -
 COPY . .
 RUN pnpm run build
 
-FROM node:20-alpine AS runner
+FROM node:20 AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3001
