@@ -6,7 +6,7 @@ import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import JSZip from 'jszip';
 import ffmpeg from 'fluent-ffmpeg';
 import ffmpegPath from 'ffmpeg-static';
-import { authenticateToken } from '../middleware/auth.js';
+import { maybeAuthenticate } from '../middleware/auth.js';
 
 const router = express.Router();
 const isLikelyText = (buf: Buffer): boolean => {
@@ -150,7 +150,7 @@ router.get('/api/formats/:fileId', async (req, res) => {
 });
 
 // Route pour convertir un fichier
-router.post('/api/convert', authenticateToken, async (req, res) => {
+router.post('/api/convert', maybeAuthenticate, async (req, res) => {
   try {
     const { fileId, targetFormat, options = {} } = req.body;
     
