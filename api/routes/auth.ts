@@ -5,6 +5,7 @@
 import { Router, type Request, type Response } from 'express'
 import crypto from 'crypto'
 import jwt from 'jsonwebtoken'
+import { pool } from '../db.js'
 
 type Plan = 'free' | 'pro' | 'premium'
 interface UserRecord {
@@ -18,7 +19,7 @@ interface UserRecord {
   maxConversions: number
 }
 
-const users = new Map<string, UserRecord>()
+// DB-backed auth: users stored in Postgres
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
 const hashPassword = (password: string, salt?: string) => {
@@ -52,10 +53,6 @@ router.post('/register', async (req: Request, res: Response): Promise<void> => {
     res.status(400).json({ error: 'Email et mot de passe requis' })
     return
   }
-  if (users.has(email)) {
-    res.status(409).json({ error: 'Utilisateur déjà enregistré' })
-    return
-  }
   const { hash, salt } = hashPassword(password)
   const record: UserRecord = {
     id: crypto.randomUUID(),
@@ -67,7 +64,20 @@ router.post('/register', async (req: Request, res: Response): Promise<void> => {
     conversionsUsed: 0,
     maxConversions: 1,
   }
-  users.set(email, record)
+  try {
+    await pool.query(
+      `INSERT INTO users (id,email,name,plan,passwordHash,salt,conversionsUsed,maxConversions)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`,
+      [record.id, record.email, record.name ?? null, record.plan, record.passwordHash, record.salt, record.conversionsUsed, record.maxConversions]
+    )
+  } catch (e: any) {
+    if (e?.code === '23505') { // unique_violation
+      res.status(409).json({ error: 'Utilisateur déjà enregistré' })
+      return
+    }
+    res.status(500).json({ error: 'Erreur base de données', details: e?.message || 'unknown' })
+    return
+  }
   const token = issueToken(record)
   res.status(201).json({
     success: true,
@@ -92,7 +102,8 @@ router.post('/login', async (req: Request, res: Response): Promise<void> => {
     res.status(400).json({ error: 'Email et mot de passe requis' })
     return
   }
-  const record = users.get(email)
+  const r = await pool.query<UserRecord>('SELECT * FROM users WHERE email = $1', [email])
+  const record = r.rows[0]
   if (!record) {
     res.status(401).json({ error: 'Identifiants invalides' })
     return

@@ -2,6 +2,7 @@
  * local server entry file, for local development
  */
 import app from './app.js';
+import { ensureSchema } from './db.js';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -9,6 +10,10 @@ import path from 'path';
  * start server with port
  */
 const PORT = process.env.PORT || 3001;
+
+await ensureSchema().catch((e) => {
+  console.error('Database schema init failed:', e)
+})
 
 const server = app.listen(PORT, () => {
   console.log(`Server ready on port ${PORT}`);

@@ -13,6 +13,7 @@
     "dev": "concurrently \"npm run client:dev\" \"npm run server:dev\""
   },
   "dependencies": {
+    "pg": "^8.11.3",
     "@napi-rs/canvas": "^0.1.58",
     "@types/jsonwebtoken": "^9.0.10",
     "clsx": "^2.1.1",

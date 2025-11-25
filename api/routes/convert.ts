@@ -706,10 +706,15 @@ router.post('/api/convert', maybeAuthenticate, async (req: Request & { user?: Au
     });
 
     if (user && user.plan === 'free') {
-      const r = conversionCounts.get(userKey);
-      if (r) {
-        r.count += 1;
-        conversionCounts.set(userKey, r);
+      try {
+        const { pool } = await import('../db.js')
+        await pool.query('UPDATE users SET conversionsUsed = conversionsUsed + 1, updatedAt = NOW() WHERE id = $1', [user.id])
+      } catch {
+        const r = conversionCounts.get(userKey);
+        if (r) {
+          r.count += 1;
+          conversionCounts.set(userKey, r);
+        }
       }
     }
 
