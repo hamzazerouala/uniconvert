@@ -4,7 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 
 const resources = {
   fr: { translation: {
-    header: { title: 'UniConvert AI', account: 'Mon compte', login: 'Connexion', pricing: 'Tarifs', remaining: '{{count}} conversion(s) restante(s)' },
+    header: { title: 'Uniconvert', account: 'Mon compte', login: 'Connexion', pricing: 'Tarifs', remaining: '{{count}} conversion(s) restante(s)' },
     hero: { title: 'Convertissez vos fichiers en un clic', subtitle: 'Conversion universelle de documents, images, audio et vidéos. Rapide, sécurisé et sans inscription pour votre premier essai.' },
     upload: { drop: 'Glissez-déposez votre fichier ici', browse: 'cliquez pour parcourir', chooseFile: 'Choisir un fichier', progress: 'Téléversement en cours... {{percent}}%', success: 'Fichier uploadé avec succès : {{name}}', supported: 'Formats supportés : Documents, Images, Audio, Vidéo', maxSize: 'Taille maximale : 50MB' },
     convert: { successTitle: 'Conversion réussie !', successText: 'Votre fichier a été converti de {{from}} vers {{to}}', download: 'Télécharger le fichier', another: 'Convertir un autre fichier', chooseFormat: 'Choisir le format de destination', selectFormat: 'Sélectionner un format', button: 'Convertir le fichier', converting: 'Conversion en cours...', sizeOriginal: 'Taille originale :', sizeConverted: 'Taille convertie :', title: 'Convertir votre fichier', currentFormatLabel: 'Format actuel :' },
@@ -12,7 +12,7 @@ const resources = {
     app: { comingSoon: 'Bientôt disponible' },
     limit: { title: 'Limite de conversions atteinte', text: 'Vous avez atteint votre limite de {{limit}} conversion(s) gratuite(s). Passez à un plan Pro pour des conversions illimitées.', viewPricing: 'Voir les tarifs', cancel: 'Annuler' },
     features: { fastTitle: 'Rapide & Efficace', fastDesc: 'Conversion instantanée avec des serveurs optimisés pour des performances maximales.', secureTitle: 'Sécurisé', secureDesc: 'Vos fichiers sont traités de manière sécurisée et supprimés automatiquement après conversion.', universalTitle: 'Universel', universalDesc: 'Support de plus de 50 formats différents : documents, images, audio, vidéo et archives.' },
-    footer: { copyright: '© 2024 UniConvert AI. Tous droits réservés.' },
+    footer: { copyright: '© 2024 Uniconvert. Tous droits réservés.' },
     pricing: { choosePlan: 'Choisissez votre plan', monthly: 'Mensuel', yearly: 'Annuel', backHome: "Retour à l'accueil", popular: 'Populaire', faq: 'Questions fréquentes', save20: 'Économisez 20%', stripeSimulation: 'Simulation Stripe', billedYearly: 'Facturé {{amount}} annuellement' },
     plan: {
       free: { name: 'Gratuit', period: 'à vie', description: 'Parfait pour essayer notre service', button: 'Commencer gratuitement', features: { daily: '1 conversion par jour', basicFormats: 'Formats de base', max50: 'Taille maximale 50MB', emailSupport: 'Support par email' } },
@@ -37,7 +37,7 @@ const resources = {
     }
   } },
   en: { translation: {
-    header: { title: 'UniConvert AI', account: 'My account', login: 'Sign in', pricing: 'Pricing', remaining: '{{count}} conversion(s) left' },
+    header: { title: 'Uniconvert', account: 'My account', login: 'Sign in', pricing: 'Pricing', remaining: '{{count}} conversion(s) left' },
     hero: { title: 'Convert your files in one click', subtitle: 'Universal conversion for documents, images, audio and videos. Fast, secure, and no sign-up for your first try.' },
     upload: { drop: 'Drag & drop your file here', browse: 'click to browse', chooseFile: 'Choose a file', progress: 'Uploading... {{percent}}%', success: 'File uploaded successfully: {{name}}', supported: 'Supported formats: Documents, Images, Audio, Video', maxSize: 'Max size: 50MB' },
     convert: { successTitle: 'Conversion successful!', successText: 'Your file was converted from {{from}} to {{to}}', download: 'Download file', another: 'Convert another file', chooseFormat: 'Choose destination format', selectFormat: 'Select a format', button: 'Convert file', converting: 'Converting...', sizeOriginal: 'Original size:', sizeConverted: 'Converted size:', title: 'Convert your file', currentFormatLabel: 'Current format:' },
@@ -45,7 +45,7 @@ const resources = {
     app: { comingSoon: 'Coming Soon' },
     limit: { title: 'Conversion limit reached', text: 'You have reached your limit of {{limit}} free conversion(s). Upgrade to Pro for unlimited conversions.', viewPricing: 'View pricing', cancel: 'Cancel' },
     features: { fastTitle: 'Fast & Efficient', fastDesc: 'Instant conversion with servers optimized for maximum performance.', secureTitle: 'Secure', secureDesc: 'Your files are processed securely and automatically deleted after conversion.', universalTitle: 'Universal', universalDesc: 'Support for 50+ formats: documents, images, audio, video and archives.' },
-    footer: { copyright: '© 2024 UniConvert AI. All rights reserved.' },
+    footer: { copyright: '© 2024 Uniconvert. All rights reserved.' },
     pricing: { choosePlan: 'Choose your plan', monthly: 'Monthly', yearly: 'Yearly', backHome: 'Back to home', popular: 'Popular', faq: 'Frequently asked questions', save20: 'Save 20%', stripeSimulation: 'Stripe simulation', billedYearly: 'Billed {{amount}} yearly' },
     plan: {
       free: { name: 'Free', period: 'forever', description: 'Perfect to try our service', button: 'Start for free', features: { daily: '1 conversion per day', basicFormats: 'Basic formats', max50: 'Max size 50MB', emailSupport: 'Email support' } },
@@ -70,14 +70,14 @@ const resources = {
     }
   } },
   es: { translation: {
-    header: { title: 'UniConvert AI', account: 'Mi cuenta', login: 'Iniciar sesión', pricing: 'Precios', remaining: '{{count}} conversión(es) restante(s)' },
+    header: { title: 'Uniconvert', account: 'Mi cuenta', login: 'Iniciar sesión', pricing: 'Precios', remaining: '{{count}} conversión(es) restante(s)' },
     hero: { title: 'Convierte tus archivos con un clic', subtitle: 'Conversión universal de documentos, imágenes, audio y videos. Rápido, seguro y sin registro para tu primera prueba.' },
     upload: { drop: 'Arrastra y suelta tu archivo aquí', browse: 'haz clic para explorar', chooseFile: 'Elegir archivo', progress: 'Subiendo... {{percent}}%', success: 'Archivo subido con éxito: {{name}}', supported: 'Formatos soportados: Documentos, Imágenes, Audio, Vídeo', maxSize: 'Tamaño máximo: 50MB' },
     convert: { successTitle: '¡Conversión exitosa!', successText: 'Tu archivo se convirtió de {{from}} a {{to}}', download: 'Descargar archivo', another: 'Convertir otro archivo', chooseFormat: 'Elegir formato de destino', selectFormat: 'Seleccionar un formato', button: 'Convertir archivo', converting: 'Convirtiendo...', sizeOriginal: 'Tamaño original:', sizeConverted: 'Tamaño convertido:', title: 'Convertir tu archivo', currentFormatLabel: 'Formato actual:' },
     category: { document: 'Documento', image: 'Imagen', audio: 'Audio', video: 'Vídeo', file: 'Archivo' },
     limit: { title: 'Límite de conversiones alcanzado', text: 'Has alcanzado tu límite de {{limit}} conversión(es) gratuita(s). Actualiza a Pro para conversiones ilimitadas.', viewPricing: 'Ver precios', cancel: 'Cancelar' },
     features: { fastTitle: 'Rápido y eficiente', fastDesc: 'Conversión instantánea con servidores optimizados para máximo rendimiento.', secureTitle: 'Seguro', secureDesc: 'Tus archivos se procesan de forma segura y se eliminan automáticamente tras la conversión.', universalTitle: 'Universal', universalDesc: 'Soporte para más de 50 formatos: documentos, imágenes, audio, vídeo y archivos.' },
-    footer: { copyright: '© 2024 UniConvert AI. Todos los derechos reservados.' },
+    footer: { copyright: '© 2024 Uniconvert. Todos los derechos reservados.' },
     pricing: { choosePlan: 'Elige tu plan', monthly: 'Mensual', yearly: 'Anual', backHome: 'Volver al inicio', popular: 'Popular', faq: 'Preguntas frecuentes', save20: 'Ahorra 20%', stripeSimulation: 'Simulación Stripe', billedYearly: 'Facturado {{amount}} anualmente' },
     plan: {
       free: { name: 'Gratis', period: 'para siempre', description: 'Perfecto para probar nuestro servicio', button: 'Comenzar gratis', features: { daily: '1 conversión por día', basicFormats: 'Formatos básicos', max50: 'Tamaño máximo 50MB', emailSupport: 'Soporte por email' } },
@@ -102,7 +102,7 @@ const resources = {
     }
   } },
   de: { translation: {
-    header: { title: 'UniConvert AI', account: 'Mein Konto', login: 'Anmelden', pricing: 'Preise', remaining: '{{count}} verbleibende Konvertierung(en)' },
+    header: { title: 'Uniconvert', account: 'Mein Konto', login: 'Anmelden', pricing: 'Preise', remaining: '{{count}} verbleibende Konvertierung(en)' },
     hero: { title: 'Konvertieren Sie Ihre Dateien mit einem Klick', subtitle: 'Universelle Konvertierung von Dokumenten, Bildern, Audio und Videos. Schnell, sicher und ohne Anmeldung.' },
     upload: { drop: 'Datei hierher ziehen und ablegen', browse: 'zum Durchsuchen klicken', chooseFile: 'Datei auswählen', progress: 'Hochladen... {{percent}}%', success: 'Datei erfolgreich hochgeladen: {{name}}', supported: 'Unterstützte Formate: Dokumente, Bilder, Audio, Video', maxSize: 'Maximale Größe: 50MB' },
     convert: { successTitle: 'Konvertierung erfolgreich!', successText: 'Ihre Datei wurde von {{from}} zu {{to}} konvertiert', download: 'Datei herunterladen', another: 'Weitere Datei konvertieren', chooseFormat: 'Zielformat wählen', selectFormat: 'Format auswählen', button: 'Datei konvertieren', converting: 'Konvertiere...', sizeOriginal: 'Originalgröße:', sizeConverted: 'Konvertierte Größe:', title: 'Konvertieren Sie Ihre Datei', currentFormatLabel: 'Aktuelles Format:' },
@@ -110,7 +110,7 @@ const resources = {
     app: { comingSoon: 'Demnächst verfügbar' },
     limit: { title: 'Konvertierungslimit erreicht', text: 'Sie haben Ihr Limit von {{limit}} kostenloser Konvertierung(en) erreicht. Upgraden Sie auf Pro für unbegrenzte Konvertierungen.', viewPricing: 'Preise anzeigen', cancel: 'Abbrechen' },
     features: { fastTitle: 'Schnell & Effizient', fastDesc: 'Sofortige Konvertierung mit für maximale Leistung optimierten Servern.', secureTitle: 'Sicher', secureDesc: 'Ihre Dateien werden sicher verarbeitet und nach der Konvertierung automatisch gelöscht.', universalTitle: 'Universell', universalDesc: 'Unterstützung für über 50 Formate: Dokumente, Bilder, Audio, Video und Archive.' },
-    footer: { copyright: '© 2024 UniConvert AI. Alle Rechte vorbehalten.' },
+    footer: { copyright: '© 2024 Uniconvert. Alle Rechte vorbehalten.' },
     pricing: { choosePlan: 'Wählen Sie Ihren Plan', monthly: 'Monatlich', yearly: 'Jährlich', backHome: 'Zurück zur Startseite', popular: 'Beliebt', faq: 'Häufige Fragen', save20: 'Spare 20%', stripeSimulation: 'Stripe-Simulation', billedYearly: '{{amount}} jährlich abgerechnet' },
     plan: {
       free: { name: 'Kostenlos', period: 'für immer', description: 'Perfekt um unseren Service auszuprobieren', button: 'Kostenlos starten', features: { daily: '1 Konvertierung pro Tag', basicFormats: 'Grundlegende Formate', max50: 'Maximale Größe 50MB', emailSupport: 'E-Mail-Support' } },
@@ -135,7 +135,7 @@ const resources = {
     }
   } },
   zh: { translation: {
-    header: { title: 'UniConvert AI', account: '我的账户', login: '登录', pricing: '定价', remaining: '剩余 {{count}} 次转换' },
+    header: { title: 'Uniconvert', account: '我的账户', login: '登录', pricing: '定价', remaining: '剩余 {{count}} 次转换' },
     hero: { title: '一键转换您的文件', subtitle: '文档、图片、音频和视频的通用转换。快速、安全，首次使用无需注册。' },
     upload: { drop: '将文件拖放到此处', browse: '点击浏览', chooseFile: '选择文件', progress: '正在上传... {{percent}}%', success: '文件上传成功：{{name}}', supported: '支持格式：文档、图片、音频、视频', maxSize: '最大大小：50MB' },
     convert: { successTitle: '转换成功！', successText: '您的文件已从 {{from}} 转换为 {{to}}', download: '下载文件', another: '转换另一个文件', chooseFormat: '选择目标格式', selectFormat: '选择格式', button: '转换文件', converting: '正在转换...', sizeOriginal: '原始大小：', sizeConverted: '转换后大小：', title: '转换您的文件', currentFormatLabel: '当前格式：' },
@@ -143,7 +143,7 @@ const resources = {
     app: { comingSoon: '即将推出' },
     limit: { title: '转换次数已达上限', text: '您已达到 {{limit}} 次免费转换的限制。升级到 Pro 以获得无限转换。', viewPricing: '查看定价', cancel: '取消' },
     features: { fastTitle: '快速且高效', fastDesc: '使用优化服务器实现即时转换，性能更强。', secureTitle: '安全', secureDesc: '您的文件将被安全处理，并在转换后自动删除。', universalTitle: '通用', universalDesc: '支持 50+ 种格式：文档、图片、音频、视频和压缩包。' },
-    footer: { copyright: '© 2024 UniConvert AI. 版权所有。' },
+    footer: { copyright: '© 2024 Uniconvert. 版权所有。' },
     pricing: { choosePlan: '选择你的套餐', monthly: '每月', yearly: '每年', backHome: '返回首页', popular: '热门', faq: '常见问题', save20: '节省 20%', stripeSimulation: 'Stripe模拟', billedYearly: '按年计费{{amount}}' },
     plan: {
       free: { name: '免费', period: '永久', description: '适合试用我们的服务', button: '免费开始', features: { daily: '每天1次转换', basicFormats: '基本格式', max50: '最大50MB', emailSupport: '邮件支持' } },
@@ -168,7 +168,7 @@ const resources = {
     }
   } },
   ja: { translation: {
-    header: { title: 'UniConvert AI', account: 'マイアカウント', login: 'ログイン', pricing: '料金', remaining: '残り {{count}} 回の変換' },
+    header: { title: 'Uniconvert', account: 'マイアカウント', login: 'ログイン', pricing: '料金', remaining: '残り {{count}} 回の変換' },
     hero: { title: 'ワンクリックでファイル変換', subtitle: 'ドキュメント、画像、音声、動画の汎用変換。高速で安全。' },
     upload: { drop: 'ここにファイルをドラッグ＆ドロップ', browse: 'クリックして参照', chooseFile: 'ファイルを選択', progress: 'アップロード中... {{percent}}%', success: 'ファイルが正常にアップロードされました：{{name}}', supported: '対応フォーマット：ドキュメント、画像、音声、動画', maxSize: '最大サイズ：50MB' },
     convert: { successTitle: '変換が成功しました！', successText: 'ファイルは {{from}} から {{to}} に変換されました', download: 'ファイルをダウンロード', another: '別のファイルを変換', chooseFormat: '変換先フォーマットを選択', selectFormat: 'フォーマットを選択', button: 'ファイルを変換', converting: '変換中...', sizeOriginal: '元のサイズ：', sizeConverted: '変換後のサイズ：', title: 'ファイルを変換', currentFormatLabel: '現在のフォーマット：' },
@@ -176,7 +176,7 @@ const resources = {
     app: { comingSoon: '近日公開' },
     limit: { title: '変換回数制限に達しました', text: '無料変換{{limit}}回の制限に達しました。無制限の変換のためにProにアップグレードしてください。', viewPricing: '価格を見る', cancel: 'キャンセル' },
     features: { fastTitle: '高速・効率的', fastDesc: '最大性能に最適化されたサーバーで即時変換。', secureTitle: '安全', secureDesc: 'ファイルは安全に処理され、変換後に自動削除されます。', universalTitle: 'ユニバーサル', universalDesc: '50以上の形式に対応：ドキュメント、画像、音声、動画、アーカイブ。' },
-    footer: { copyright: '© 2024 UniConvert AI. 全ての権利を保有します。' },
+    footer: { copyright: '© 2024 Uniconvert. 全ての権利を保有します。' },
     pricing: { choosePlan: 'プランを選択', monthly: '毎月', yearly: '毎年', backHome: 'ホームに戻る', popular: '人気', faq: 'よくある質問', save20: '20%お得', stripeSimulation: 'Stripeシミュレーション', billedYearly: '年間請求{{amount}}' },
     plan: {
       free: { name: '無料', period: '永久', description: 'サービスを試すのに最適', button: '無料で開始', features: { daily: '1日1回の変換', basicFormats: '基本フォーマット', max50: '最大50MB', emailSupport: 'メールサポート' } },
@@ -201,7 +201,7 @@ const resources = {
     }
   } },
   ru: { translation: {
-    header: { title: 'UniConvert AI', account: 'Мой аккаунт', login: 'Войти', pricing: 'Цены', remaining: '{{count}} осталось конвертаций' },
+    header: { title: 'Uniconvert', account: 'Мой аккаунт', login: 'Войти', pricing: 'Цены', remaining: '{{count}} осталось конвертаций' },
     hero: { title: 'Конвертируйте файлы в один клик', subtitle: 'Универсальная конвертация документов, изображений, аудио и видео.' },
     upload: { drop: 'Перетащите файл сюда', browse: 'нажмите для обзора', chooseFile: 'Выберите файл', progress: 'Загрузка... {{percent}}%', success: 'Файл успешно загружен: {{name}}', supported: 'Поддерживаемые форматы: документы, изображения, аудио, видео', maxSize: 'Максимальный размер: 50MB' },
     convert: { successTitle: 'Конвертация прошла успешно!', successText: 'Ваш файл был конвертирован из {{from}} в {{to}}', download: 'Скачать файл', another: 'Конвертировать другой файл', chooseFormat: 'Выберите формат назначения', selectFormat: 'Выберите формат', button: 'Конвертировать файл', converting: 'Конвертация...', sizeOriginal: 'Исходный размер:', sizeConverted: 'Размер после конвертации:', title: 'Конвертируйте ваш файл', currentFormatLabel: 'Текущий формат:' },
@@ -209,7 +209,7 @@ const resources = {
     app: { comingSoon: 'Скоро' },
     limit: { title: 'Достигнут лимит конвертаций', text: 'Вы достигли лимита {{limit}} бесплатной конвертации(й). Обновитесь до Pro для неограниченных конвертаций.', viewPricing: 'Посмотреть цены', cancel: 'Отмена' },
     features: { fastTitle: 'Быстро и эффективно', fastDesc: 'Мгновенная конвертация на серверах, оптимизированных для максимальной производительности.', secureTitle: 'Безопасно', secureDesc: 'Файлы обрабатываются безопасно и автоматически удаляются после конвертации.', universalTitle: 'Универсально', universalDesc: 'Поддержка более 50 форматов: документы, изображения, аудио, видео и архивы.' },
-    footer: { copyright: '© 2024 UniConvert AI. Все права защищены.' },
+    footer: { copyright: '© 2024 Uniconvert. Все права защищены.' },
     pricing: { choosePlan: 'Выберите план', monthly: 'Ежемесячно', yearly: 'Ежегодно', backHome: 'Назад на главную', popular: 'Популярно', faq: 'Частые вопросы', save20: 'Экономия 20%', stripeSimulation: 'Stripe симуляция', billedYearly: 'Счет выставляется ежегодно {{amount}}' },
     plan: {
       free: { name: 'Бесплатно', period: 'навсегда', description: 'Идеально для пробования нашего сервиса', button: 'Начать бесплатно', features: { daily: '1 конвертация в день', basicFormats: 'Базовые форматы', max50: 'Максимальный размер 50MB', emailSupport: 'Поддержка по email' } },
@@ -234,7 +234,7 @@ const resources = {
     }
   } },
   ar: { translation: {
-    header: { title: 'يوني كونفرت AI', account: 'حسابي', login: 'تسجيل الدخول', pricing: 'الأسعار', remaining: '{{count}} عملية تحويل متبقية' },
+    header: { title: 'يوني كونفرت', account: 'حسابي', login: 'تسجيل الدخول', pricing: 'الأسعار', remaining: '{{count}} عملية تحويل متبقية' },
     hero: { title: 'حوّل ملفاتك بنقرة واحدة', subtitle: 'تحويل شامل للمستندات والصور والصوت والفيديو.' },
     upload: { drop: 'اسحب وأفلت ملفك هنا', browse: 'انقر للتصفح', chooseFile: 'اختر ملفًا', progress: 'جارٍ الرفع... {{percent}}%', success: 'تم رفع الملف بنجاح: {{name}}', supported: 'الصيغ المدعومة: مستندات، صور، صوت، فيديو', maxSize: 'الحجم الأقصى: 50MB' },
     convert: { successTitle: 'تمت عملية التحويل بنجاح!', successText: 'تم تحويل ملفك من {{from}} إلى {{to}}', download: 'تحميل الملف', another: 'حوّل ملفًا آخر', chooseFormat: 'اختر صيغة الوجهة', selectFormat: 'اختر صيغة', button: 'حوّل الملف', converting: 'جارٍ التحويل...', sizeOriginal: 'الحجم الأصلي:', sizeConverted: 'الحجم بعد التحويل:', title: 'حوّل ملفك', currentFormatLabel: 'التنسيق الحالي:' },
@@ -242,7 +242,7 @@ const resources = {
     pricing: { choosePlan: 'اختر خطتك', monthly: 'شهري', yearly: 'سنوي', backHome: 'الرجوع للرئيسية', popular: 'شائع', faq: 'أسئلة شائعة', stripeSimulation: 'محاكاة Stripe', billedYearly: 'فاتورة سنوية {{amount}}' },
     pdf: { page: 'الصفحة', scale: 'المقياس', pageRange: 'نطاق الصفحات', exampleRange: '(مثال: 1-3,5)', placeholderAll: 'الكل إذا كان فارغًا' },
     features: { fastTitle: 'سريع وفعّال', fastDesc: 'تحويل فوري مع خوادم مُحسّنة لأفضل أداء.', secureTitle: 'آمن', secureDesc: 'تُعالَج ملفاتك بأمان وتُحذَف تلقائيًا بعد التحويل.', universalTitle: 'شامل', universalDesc: 'دعم لأكثر من 50 صيغة: مستندات، صور، صوت، فيديو وأرشيفات.' },
-    footer: { copyright: '© 2024 يوني كونفرت AI. جميع الحقوق محفوظة.' },
+    footer: { copyright: '© 2024 يوني كونفرت. جميع الحقوق محفوظة.' },
     app: { comingSoon: 'قريبًا' },
     limit: { title: 'تم الوصول إلى حد التحويلات', text: 'لقد وصلت إلى حدك البالغ {{limit}} من عمليات التحويل المجانية. ارتقِ إلى برو للحصول على تحويلات غير محدودة.', viewPricing: 'عرض الأسعار', cancel: 'إلغاء' },
     auth: { signIn: 'تسجيل الدخول', signUp: 'إنشاء حساب', createAccount: 'إنشاء الحساب', noAccountQuestion: 'ليس لديك حساب؟ ', alreadyRegisteredQuestion: 'هل أنت مسجل بالفعل؟ ' },
@@ -261,7 +261,7 @@ const resources = {
     }
   } },
   fa: { translation: {
-    header: { title: 'UniConvert AI', account: 'حساب من', login: 'ورود', pricing: 'قیمت‌ها', remaining: '{{count}} تبدیل باقی‌مانده' },
+    header: { title: 'Uniconvert', account: 'حساب من', login: 'ورود', pricing: 'قیمت‌ها', remaining: '{{count}} تبدیل باقی‌مانده' },
     hero: { title: 'تبدیل فایل با یک کلیک', subtitle: 'تبدیل عمومی اسناد و تصاویر.' },
     upload: { drop: 'فایل خود را اینجا بکشید و رها کنید', browse: 'برای مرور کلیک کنید', chooseFile: 'انتخاب فایل', progress: 'در حال آپلود... {{percent}}%', success: 'فایل با موفقیت آپلود شد: {{name}}', supported: 'فرمت‌های پشتیبانی‌شده: اسناد، تصاویر، صدا، ویدئو', maxSize: 'حداکثر اندازه: 50MB' },
     convert: { successTitle: 'تبدیل موفق!', successText: 'فایل شما از {{from}} به {{to}} تبدیل شد', download: 'دانلود فایل', another: 'تبدیل فایل دیگر', chooseFormat: 'انتخاب فرمت مقصد', selectFormat: 'انتخاب فرمت', button: 'تبدیل فایل', converting: 'در حال تبدیل...', sizeOriginal: 'اندازه اصلی:', sizeConverted: 'اندازه پس از تبدیل:', title: 'فایل خود را تبدیل کنید', currentFormatLabel: 'فرمت فعلی:' },
@@ -269,7 +269,7 @@ const resources = {
     app: { comingSoon: 'به‌زودی' },
     limit: { title: 'محدودیت تبدیلات به پایان رسید', text: 'شما به حد {{limit}} تبدیل رایانه‌ای خود رسیده‌اید. برای تبدیلات نامحدود به Pro ارتقا دهید.', viewPricing: 'مشاهده قیمت‌ها', cancel: 'لغو' },
     features: { fastTitle: 'سریع و کارآمد', fastDesc: 'تبدیل فوری با سرورهای بهینه‌سازی‌شده برای بیشترین کارایی.', secureTitle: 'امن', secureDesc: 'فایل‌های شما به‌صورت امن پردازش می‌شوند و پس از تبدیل به‌طور خودکار حذف می‌گردند.', universalTitle: 'جامع', universalDesc: 'پشتیبانی از بیش از ۵۰ فرمت: اسناد، تصاویر، صدا، ویدئو و آرشیوها.' },
-    footer: { copyright: '© 2024 UniConvert AI. تمامی حقوق محفوظ است.' },
+    footer: { copyright: '© 2024 Uniconvert. تمامی حقوق محفوظ است.' },
     pricing: { choosePlan: 'قیمت‌ها', monthly: 'ماهانه', yearly: 'سالانه', backHome: 'بازگشت به خانه', popular: 'محبوب', faq: 'سوالات متداول', stripeSimulation: 'شبیه‌سازی Stripe', billedYearly: 'صورتحساب سالانه {{amount}}' },
     plan: {
       free: { name: 'رایگان', period: 'برای همیشه', description: 'برای امتحان خدمات ما عالی است', button: 'شروع رایگان', features: { daily: '1 تبدیل در روز', basicFormats: 'فرمت‌های پایه', max50: 'حداکثر اندازه 50MB', emailSupport: 'پشتیبانی ایمیل' } },
@@ -294,7 +294,7 @@ const resources = {
     }
   } },
   pt: { translation: {
-    header: { title: 'UniConvert AI', account: 'Minha conta', login: 'Entrar', pricing: 'Preços', remaining: '{{count}} conversão(ões) restante(s)' },
+    header: { title: 'Uniconvert', account: 'Minha conta', login: 'Entrar', pricing: 'Preços', remaining: '{{count}} conversão(ões) restante(s)' },
     hero: { title: 'Converta seus arquivos com um clique', subtitle: 'Conversão universal.' },
     upload: { drop: 'Arraste e solte seu arquivo aqui', browse: 'clique para procurar', chooseFile: 'Escolher arquivo', progress: 'Enviando... {{percent}}%', success: 'Arquivo enviado com sucesso: {{name}}', supported: 'Formatos suportados: Documentos, Imagens, Áudio, Vídeo', maxSize: 'Tamanho máximo: 50MB' },
     convert: { successTitle: 'Conversão bem-sucedida!', successText: 'Seu arquivo foi convertido de {{from}} para {{to}}', download: 'Baixar arquivo', another: 'Converter outro arquivo', chooseFormat: 'Escolher formato de destino', selectFormat: 'Selecionar formato', button: 'Converter arquivo', converting: 'Convertendo...', sizeOriginal: 'Tamanho original:', sizeConverted: 'Tamanho convertido:', title: 'Converta seu arquivo', currentFormatLabel: 'Formato atual:' },
@@ -302,7 +302,7 @@ const resources = {
     app: { comingSoon: 'Em breve' },
     limit: { title: 'Limite de conversões atingido', text: 'Você atingiu seu limite de {{limit}} conversão(ões) gratuita(s). Atualize para Pro para conversões ilimitadas.', viewPricing: 'Ver preços', cancel: 'Cancelar' },
     features: { fastTitle: 'Rápido e Eficiente', fastDesc: 'Conversão instantânea com servidores otimizados para desempenho máximo.', secureTitle: 'Seguro', secureDesc: 'Seus arquivos são processados com segurança e excluídos automaticamente após a conversão.', universalTitle: 'Universal', universalDesc: 'Suporte a mais de 50 formatos: documentos, imagens, áudio, vídeo e arquivos.' },
-    footer: { copyright: '© 2024 UniConvert AI. Todos os direitos reservados.' },
+    footer: { copyright: '© 2024 Uniconvert. Todos os direitos reservados.' },
     pricing: { choosePlan: 'Preços', monthly: 'Mensal', yearly: 'Anual', backHome: 'Voltar para casa', popular: 'Popular', faq: 'Perguntas frequentes', save20: 'Economize 20%', stripeSimulation: 'Simulação Stripe', billedYearly: 'Cobrança anual {{amount}}' },
     plan: {
       free: { name: 'Grátis', period: 'para sempre', description: 'Perfeito para experimentar nosso serviço', button: 'Começar de graça', features: { daily: '1 conversão por dia', basicFormats: 'Formatos básicos', max50: 'Tamanho máximo 50MB', emailSupport: 'Suporte por email' } },
@@ -327,7 +327,7 @@ const resources = {
     }
   } },
   hi: { translation: {
-    header: { title: 'UniConvert AI', account: 'मेरा खाता', login: 'साइन इन', pricing: 'मूल्य', remaining: '{{count}} कन्वर्ज़न शेष' },
+    header: { title: 'Uniconvert', account: 'मेरा खाता', login: 'साइन इन', pricing: 'मूल्य', remaining: '{{count}} कन्वर्ज़न शेष' },
     hero: { title: 'एक क्लिक में अपनी फ़ाइलें बदलें', subtitle: 'दस्तावेज़, चित्र, ऑडियो और वीडियो का सार्वभौमिक रूपांतरण। तेज़ और सुरक्षित।' },
     upload: { drop: 'अपनी फ़ाइल यहाँ ड्रैग और ड्रॉप करें', browse: 'ब्राउज़ करने के लिए क्लिक करें', chooseFile: 'फ़ाइल चुनें', progress: 'अपलोड हो रहा है... {{percent}}%', success: 'फ़ाइल सफलतापूर्वक अपलोड हुई: {{name}}', supported: 'समर्थित फ़ॉर्मैट: दस्तावेज़, चित्र, ऑडियो, वीडियो', maxSize: 'अधिकतम आकार: 50MB' },
     convert: { successTitle: 'रूपांतरण सफल!', successText: 'आपकी फ़ाइल {{from}} से {{to}} में बदली गई', download: 'फ़ाइल डाउनलोड करें', another: 'दूसरी फ़ाइल रूपांतरित करें', chooseFormat: 'गंतव्य फ़ॉर्मैट चुनें', selectFormat: 'फ़ॉर्मैट चुनें', button: 'फ़ाइल रूपांतरित करें', converting: 'रूपांतरण हो रहा है...', sizeOriginal: 'मूल आकार:', sizeConverted: 'रूपांतरण के बाद आकार:', title: 'अपनी फ़ाइल रूपांतरित करें', currentFormatLabel: 'वर्तमान फ़ॉर्मैट:' },
@@ -335,7 +335,7 @@ const resources = {
     app: { comingSoon: 'जल्द आ रहा है' },
     limit: { title: 'रूपांतरण सीमा पूरी हुई', text: 'आपने {{limit}} मुफ्त रूपांतरण की सीमा पूरी कर ली है। असीमित रूपांतरणों के लिए Pro में अपग्रेड करें।', viewPricing: 'मूल्य देखें', cancel: 'रद्द करें' },
     features: { fastTitle: 'तेज़ और प्रभावी', fastDesc: 'अधिकतम प्रदर्शन के लिए अनुकूलित सर्वरों पर त्वरित रूपांतरण।', secureTitle: 'सुरक्षित', secureDesc: 'आपकी फ़ाइलें सुरक्षित रूप से संसाधित होती हैं और रूपांतरण के बाद स्वतः हट जाती हैं।', universalTitle: 'सार्वभौमिक', universalDesc: '50+ फ़ॉर्मैट का समर्थन: दस्तावेज़, चित्र, ऑडियो, वीडियो और आर्काइव।' },
-    footer: { copyright: '© 2024 UniConvert AI. सर्वाधिकार सुरक्षित.' },
+    footer: { copyright: '© 2024 Uniconvert. सर्वाधिकार सुरक्षित.' },
     pricing: { choosePlan: 'अपना प्लान चुनें', monthly: 'मासिक', yearly: 'वार्षिक', backHome: 'मुखपृष्ठ पर लौटें', popular: 'लोकप्रिय', faq: 'अक्सर पूछे जाने वाले प्रश्न', save20: '20% बचत', stripeSimulation: 'Stripe सिमुलेशन', billedYearly: 'वार्षिक बिलिंग {{amount}}' },
     plan: {
       free: { name: 'नि:शुल्क', period: 'हमेशा', description: 'हमारी सेवा आज़माने के लिए उत्कृष्ट', button: 'नि:शुल्क शुरू करें', features: { daily: 'प्रतिदिन 1 रूपांतरण', basicFormats: 'बुनियादी फ़ॉर्मैट', max50: 'अधिकतम आकार 50MB', emailSupport: 'ईमेल समर्थन' } },
