@@ -6,6 +6,7 @@ import express, {
   type Request,
   type Response,
 } from 'express'
+import path from 'path'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import authRoutes from './routes/auth.js'
@@ -57,11 +58,14 @@ app.use(errorLogger)
 /**
  * 404 handler
  */
-app.use((req: Request, res: Response) => {
-  res.status(404).json({
-    success: false,
-    error: 'API not found',
-  })
+// Serve built frontend if available
+const distDir = path.join(process.cwd(), 'dist')
+app.use(express.static(distDir))
+app.get('*', (req: Request, res: Response) => {
+  if (req.path.startsWith('/api')) {
+    return res.status(404).json({ success: false, error: 'API not found' })
+  }
+  res.sendFile(path.join(distDir, 'index.html'))
 })
 
 export default app
