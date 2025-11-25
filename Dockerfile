@@ -21,5 +21,5 @@ COPY --from=build /app /app
 # Expose API port
 EXPOSE 3001
 
-# Start server with tsx
-CMD ["node", "./node_modules/.bin/tsx", "api/server.ts"]
+# Start server with tsx ESM loader
+CMD ["node", "--loader", "tsx", "api/server.ts"]
