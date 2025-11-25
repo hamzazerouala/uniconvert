@@ -134,7 +134,22 @@ router.get('/api/formats/:fileId', async (req, res) => {
     
     console.log(`Extension détectée: ${extension}, Type MIME: ${detectedType?.mime || 'inconnu'}`);
     
-    const availableFormats = SUPPORTED_CONVERSIONS[extension as keyof typeof SUPPORTED_CONVERSIONS] || [];
+    let availableFormats = SUPPORTED_CONVERSIONS[extension as keyof typeof SUPPORTED_CONVERSIONS] || [];
+    if (extension === '.pdf') {
+      let pdfImageSupported = false;
+      try {
+        const nodeModule = await import('module');
+        const require = nodeModule.createRequire(import.meta.url);
+        require('pdfjs-dist/legacy/build/pdf.js');
+        require('@napi-rs/canvas');
+        pdfImageSupported = true;
+      } catch {
+        pdfImageSupported = false;
+      }
+      if (!pdfImageSupported) {
+        availableFormats = availableFormats.filter((f) => f !== '.png' && f !== '.zip');
+      }
+    }
 
     res.json({
       fileId,

@@ -51,6 +51,26 @@ app.use(
 )
 
 /**
+ * capabilities
+ */
+app.get('/api/capabilities', async (_req: Request, res: Response) => {
+  let pdfImage = false
+  let pdfZipImages = false
+  try {
+    const nodeModule = await import('module')
+    const require = nodeModule.createRequire(import.meta.url)
+    require('pdfjs-dist/legacy/build/pdf.js')
+    require('@napi-rs/canvas')
+    pdfImage = true
+    pdfZipImages = true
+  } catch {
+    pdfImage = false
+    pdfZipImages = false
+  }
+  res.json({ pdfImage, pdfZipImages })
+})
+
+/**
  * error handler middleware
  */
 app.use(errorLogger)

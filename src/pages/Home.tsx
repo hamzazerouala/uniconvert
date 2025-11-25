@@ -5,7 +5,7 @@ import FileUpload from '../components/FileUpload';
 import ConversionOptions from '../components/ConversionOptions';
 import useAppStore from '../store/appStore';
 import useAuthStore from '../store/authStore';
-import { uploadFile, getAvailableFormats, convertFile, downloadFile } from '../utils/api';
+import { uploadFile, getAvailableFormats, convertFile, downloadFile, getCapabilities } from '../utils/api';
 
 type ConvertOptions = { video?: { crf:number; bitrate:string; preset:string }, pdf?: { pageNumber?: number; pageRange?: string; scale: number } }
 import { CheckCircle, AlertCircle, Download, RefreshCw, Lock } from 'lucide-react';
@@ -67,8 +67,15 @@ export default function Home() {
         
         // Récupération des formats disponibles
         try {
-          const formatsResult = await getAvailableFormats(result.fileId);
-          setAvailableFormats(formatsResult.availableFormats);
+          const [formatsResult, caps] = await Promise.all([
+            getAvailableFormats(result.fileId),
+            getCapabilities()
+          ]);
+          let formats = formatsResult.availableFormats;
+          if (formatsResult.originalFormat === '.pdf' && !caps.pdfImage) {
+            formats = formats.filter((f) => f !== '.png' && f !== '.zip');
+          }
+          setAvailableFormats(formats);
         } catch (error) {
           console.error(t('errors.fetchFormats'), error);
         }

@@ -43,6 +43,14 @@ export const getAvailableFormats = async (fileId: string): Promise<{
   return response.json();
 };
 
+export const getCapabilities = async (): Promise<{ pdfImage: boolean; pdfZipImages: boolean }> => {
+  const response = await fetch(`${API_BASE_URL}/api/capabilities`);
+  if (!response.ok) {
+    return { pdfImage: false, pdfZipImages: false };
+  }
+  return response.json();
+};
+
 // Fonction pour convertir un fichier
 export type ConvertOptions = { video?: { crf:number; bitrate:string; preset:string }, pdf?: { pageNumber?: number; pageRange?: string; scale: number } }
 
