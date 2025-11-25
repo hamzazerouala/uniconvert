@@ -1,7 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM node:20-alpine AS build
 WORKDIR /app
-ENV NODE_ENV=production
 
 # Install dependencies
 COPY package.json pnpm-lock.yaml ./
@@ -24,4 +23,3 @@ EXPOSE 3001
 
 # Start server with tsx
 CMD ["node", "./node_modules/.bin/tsx", "api/server.ts"]
-
