@@ -29,22 +29,22 @@ if (ffmpegPath) {
 // Configuration des formats supportés pour chaque type de fichier
 const SUPPORTED_CONVERSIONS = {
   // Images
-  '.jpg': ['.png', '.webp', '.tiff', '.pdf'],
-  '.jpeg': ['.png', '.webp', '.tiff', '.pdf'],
-  '.png': ['.jpg', '.webp', '.tiff', '.pdf'],
-  '.webp': ['.jpg', '.png', '.tiff', '.pdf'],
-  '.tiff': ['.jpg', '.png', '.webp', '.pdf'],
-  '.svg': ['.png', '.jpg', '.webp', '.pdf'],
+  '.jpg': ['.png', '.webp', '.tiff', '.pdf', '.avif', '.gif'],
+  '.jpeg': ['.png', '.webp', '.tiff', '.pdf', '.avif', '.gif'],
+  '.png': ['.jpg', '.webp', '.tiff', '.pdf', '.avif', '.gif'],
+  '.webp': ['.jpg', '.png', '.tiff', '.pdf', '.avif', '.gif'],
+  '.tiff': ['.jpg', '.png', '.webp', '.pdf', '.avif', '.gif'],
+  '.svg': ['.png', '.jpg', '.webp', '.pdf', '.avif', '.gif'],
   '.heic': ['.jpg', '.png', '.webp'],
   '.gif': ['.png', '.jpg', '.webp'],
 
   // Documents
   '.txt': ['.pdf'],
   '.rtf': ['.pdf'],
-  '.docx': ['.txt'],
+  '.docx': ['.txt', '.html', '.pdf'],
   '.xlsx': ['.csv'],
   '.pptx': ['.pdf', '.txt'],
-  '.pdf': ['.txt', '.png', '.zip'],
+  '.pdf': ['.txt', '.png', '.jpg', '.zip'],
 
   // Audio
   '.wav': ['.mp3'],
@@ -282,6 +282,16 @@ router.post('/api/convert', maybeAuthenticate, async (req: Request & { user?: Au
             .webp({ quality: options.quality || 80 })
             .toBuffer();
           break;
+        case '.avif':
+          convertedBuffer = await imageProcessor
+            .avif({ quality: options.quality || 50 })
+            .toBuffer();
+          break;
+        case '.gif':
+          convertedBuffer = await imageProcessor
+            .gif()
+            .toBuffer();
+          break;
         case '.tiff':
           convertedBuffer = await imageProcessor
             .tiff({ quality: options.quality || 80 })
@@ -458,6 +468,16 @@ router.post('/api/convert', maybeAuthenticate, async (req: Request & { user?: Au
       const firstSheetName = wb.SheetNames[0];
       const csv = XLSX.utils.sheet_to_csv(wb.Sheets[firstSheetName]);
       convertedBuffer = Buffer.from(csv);
+    } else if (originalExtension === '.xlsx' && targetFormat === '.json') {
+      const XLSX = await import('xlsx');
+      const wb = XLSX.read(buffer, { type: 'buffer' });
+      const firstSheetName = wb.SheetNames[0];
+      const json = XLSX.utils.sheet_to_json(wb.Sheets[firstSheetName], { defval: '' });
+      convertedBuffer = Buffer.from(JSON.stringify(json, null, 2));
+    } else if (originalExtension === '.docx' && targetFormat === '.html') {
+      const mammoth = await import('mammoth');
+      const result = await mammoth.convertToHtml({ buffer });
+      convertedBuffer = Buffer.from(result.value || '');
     } else if (originalExtension === '.pptx' && targetFormat === '.txt') {
       const zip = await JSZip.loadAsync(buffer);
       const allText: string[] = [];
