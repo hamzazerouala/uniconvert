@@ -494,58 +494,72 @@ router.post('/api/convert', maybeAuthenticate, async (req, res) => {
       }
       convertedBuffer = Buffer.from(await pdfDoc.save());
     } else if (originalExtension === '.pdf' && (targetFormat === '.png' || targetFormat === '.jpg')) {
-      const nodeModule = await import('module');
-      const require = nodeModule.createRequire(import.meta.url);
-      const pdfjs = require('pdfjs-dist/legacy/build/pdf.js') as unknown as PdfJsModule;
-      const { createCanvas } = require('@napi-rs/canvas');
-      const doc = await pdfjs.getDocument({ data: buffer }).promise;
-      const pageNumber = options?.pdf?.pageNumber ? Math.max(1, Math.min(doc.numPages, Number(options.pdf.pageNumber))) : 1;
-      const scale = options?.pdf?.scale ? Number(options.pdf.scale) : 2.0;
-      const page = await doc.getPage(pageNumber);
-      const viewport = page.getViewport({ scale });
-      const canvas = createCanvas(viewport.width, viewport.height);
-      const ctx = canvas.getContext('2d');
-      const renderContext = { canvasContext: ctx, viewport };
-      await page.render(renderContext).promise;
-      convertedBuffer = canvas.toBuffer(targetFormat === '.jpg' ? 'image/jpeg' : 'image/png');
-    } else if (originalExtension === '.pdf' && targetFormat === '.zip') {
-      const nodeModule = await import('module');
-      const require = nodeModule.createRequire(import.meta.url);
-      const pdfjs = require('pdfjs-dist/legacy/build/pdf.js') as unknown as PdfJsModule;
-      const { createCanvas } = require('@napi-rs/canvas');
-      const zip = new JSZip();
-      const doc = await pdfjs.getDocument({ data: buffer }).promise;
-      const scale = options?.pdf?.scale ? Number(options.pdf.scale) : 2.0;
-      let pages: number[] = [];
-      const range: string | undefined = options?.pdf?.pageRange;
-      if (range && typeof range === 'string') {
-        for (const part of range.split(',')) {
-          if (part.includes('-')) {
-            const [a, b] = part.split('-').map(n => Number(n));
-            const start = Math.max(1, Math.min(a, b));
-            const end = Math.min(doc.numPages, Math.max(a, b));
-            for (let p = start; p <= end; p++) pages.push(p);
-          } else {
-            const p = Number(part);
-            if (!Number.isNaN(p)) pages.push(Math.max(1, Math.min(doc.numPages, p)));
-          }
-        }
-        pages = Array.from(new Set(pages)).sort((x,y)=>x-y);
-      }
-      if (pages.length === 0) {
-        for (let i = 1; i <= doc.numPages; i++) pages.push(i);
-      }
-      for (const i of pages) {
-        const page = await doc.getPage(i);
+      try {
+        const nodeModule = await import('module');
+        const require = nodeModule.createRequire(import.meta.url);
+        const pdfjs = require('pdfjs-dist/legacy/build/pdf.js') as unknown as PdfJsModule;
+        const { createCanvas } = require('@napi-rs/canvas');
+        const doc = await pdfjs.getDocument({ data: buffer }).promise;
+        const pageNumber = options?.pdf?.pageNumber ? Math.max(1, Math.min(doc.numPages, Number(options.pdf.pageNumber))) : 1;
+        const scale = options?.pdf?.scale ? Number(options.pdf.scale) : 2.0;
+        const page = await doc.getPage(pageNumber);
         const viewport = page.getViewport({ scale });
         const canvas = createCanvas(viewport.width, viewport.height);
         const ctx = canvas.getContext('2d');
         const renderContext = { canvasContext: ctx, viewport };
         await page.render(renderContext).promise;
-        const imgBuf = canvas.toBuffer('image/png');
-        zip.file(`page-${i}.png`, imgBuf);
+        convertedBuffer = canvas.toBuffer(targetFormat === '.jpg' ? 'image/jpeg' : 'image/png');
+      } catch (e) {
+        return res.status(501).json({
+          error: 'Conversion PDF vers image indisponible sur cette plateforme',
+          details: e instanceof Error ? e.message : 'Module canvas manquant'
+        });
       }
-      convertedBuffer = await zip.generateAsync({ type: 'nodebuffer' });
+    } else if (originalExtension === '.pdf' && targetFormat === '.zip') {
+      try {
+        const nodeModule = await import('module');
+        const require = nodeModule.createRequire(import.meta.url);
+        const pdfjs = require('pdfjs-dist/legacy/build/pdf.js') as unknown as PdfJsModule;
+        const { createCanvas } = require('@napi-rs/canvas');
+        const zip = new JSZip();
+        const doc = await pdfjs.getDocument({ data: buffer }).promise;
+        const scale = options?.pdf?.scale ? Number(options.pdf.scale) : 2.0;
+        let pages: number[] = [];
+        const range: string | undefined = options?.pdf?.pageRange;
+        if (range && typeof range === 'string') {
+          for (const part of range.split(',')) {
+            if (part.includes('-')) {
+              const [a, b] = part.split('-').map(n => Number(n));
+              const start = Math.max(1, Math.min(a, b));
+              const end = Math.min(doc.numPages, Math.max(a, b));
+              for (let p = start; p <= end; p++) pages.push(p);
+            } else {
+              const p = Number(part);
+              if (!Number.isNaN(p)) pages.push(Math.max(1, Math.min(doc.numPages, p)));
+            }
+          }
+          pages = Array.from(new Set(pages)).sort((x,y)=>x-y);
+        }
+        if (pages.length === 0) {
+          for (let i = 1; i <= doc.numPages; i++) pages.push(i);
+        }
+        for (const i of pages) {
+          const page = await doc.getPage(i);
+          const viewport = page.getViewport({ scale });
+          const canvas = createCanvas(viewport.width, viewport.height);
+          const ctx = canvas.getContext('2d');
+          const renderContext = { canvasContext: ctx, viewport };
+          await page.render(renderContext).promise;
+          const imgBuf = canvas.toBuffer('image/png');
+          zip.file(`page-${i}.png`, imgBuf);
+        }
+        convertedBuffer = await zip.generateAsync({ type: 'nodebuffer' });
+      } catch (e) {
+        return res.status(501).json({
+          error: 'Conversion PDF en ZIP d’images indisponible sur cette plateforme',
+          details: e instanceof Error ? e.message : 'Module canvas manquant'
+        });
+      }
     } else if (originalExtension === '.pdf' && targetFormat === '.txt') {
       const nodeModule = await import('module');
       const require = nodeModule.createRequire(import.meta.url);
