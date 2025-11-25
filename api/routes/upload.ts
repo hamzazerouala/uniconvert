@@ -6,11 +6,9 @@ import path from 'path';
 import fs from 'fs/promises';
 
 // Déclaration d'extension pour multer
-declare global {
-  namespace Express {
-    interface Request {
-      file?: MulterFile;
-    }
+declare module 'express-serve-static-core' {
+  interface Request {
+    file?: MulterFile
   }
 }
 

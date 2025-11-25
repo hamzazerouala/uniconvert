@@ -576,18 +576,47 @@ router.post('/api/convert', maybeAuthenticate, async (req, res) => {
         });
       }
     } else if (originalExtension === '.pdf' && targetFormat === '.txt') {
-      const nodeModule = await import('module');
-      const require = nodeModule.createRequire(import.meta.url);
-      const pdfjs = require('pdfjs-dist/legacy/build/pdf.js') as unknown as PdfJsModule;
-      const doc = await pdfjs.getDocument({ data: buffer }).promise;
-      let text = '';
-      for (let i = 1; i <= doc.numPages; i++) {
-        const page = await doc.getPage(i);
-        const content = await page.getTextContent();
-        const parts = (content.items as PdfJsTextItem[]).map((it) => (it.str ? it.str : '')).filter(Boolean);
-        text += parts.join(' ') + '\n';
+      // Essai 1: pdf-parse via import ESM
+      try {
+        type PdfParseFn = (data: Buffer) => Promise<{ text?: string }>
+        const modUnknown: unknown = await import('pdf-parse')
+        const maybeDefault = (modUnknown as { default?: unknown }).default
+        const pdfParse: PdfParseFn = typeof maybeDefault === 'function'
+          ? (maybeDefault as PdfParseFn)
+          : (modUnknown as unknown as PdfParseFn)
+        const parsed = await pdfParse(buffer)
+        convertedBuffer = Buffer.from((parsed?.text as string) || '');
+      } catch {
+        // Essai 2: pdf-parse via require (CJS)
+        try {
+          const nodeModule = await import('module');
+          const require = nodeModule.createRequire(import.meta.url);
+          const pdfParse = require('pdf-parse') as (data: Buffer) => Promise<{ text?: string }>
+          const parsed = await pdfParse(buffer)
+          convertedBuffer = Buffer.from((parsed?.text as string) || '');
+        } catch {
+          // Essai 3: fallback pdfjs-dist
+          try {
+            const nodeModule = await import('module');
+            const require = nodeModule.createRequire(import.meta.url);
+            const pdfjs = require('pdfjs-dist/legacy/build/pdf.js') as unknown as PdfJsModule;
+            const doc = await pdfjs.getDocument({ data: buffer }).promise;
+            let text = '';
+            for (let i = 1; i <= doc.numPages; i++) {
+              const page = await doc.getPage(i);
+              const content = await page.getTextContent();
+              const parts = (content.items as PdfJsTextItem[]).map((it) => (it.str ? it.str : '')).filter(Boolean);
+              text += parts.join(' ') + '\n';
+            }
+            convertedBuffer = Buffer.from(text || '');
+          } catch (e) {
+            return res.status(500).json({
+              error: 'Extraction de texte PDF indisponible',
+              details: e instanceof Error ? e.message : 'Erreur inconnue'
+            });
+          }
+        }
       }
-      convertedBuffer = Buffer.from(text || '');
     } else if (originalExtension === '.wav' && targetFormat === '.mp3') {
       const wavMod = await import('node-wav');
       const lamejs = await import('lamejs');
