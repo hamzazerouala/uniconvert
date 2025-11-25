@@ -1,0 +1,4 @@
+UniConvert AI
+Ce fichier texte est un exemple pour tester la conversion en PDF.
+Ligne 3: quelques caractères spéciaux !@# éèàç
+Fin du fichier.
