@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import path from 'path';
 import fs from 'fs/promises';
 import sharp from 'sharp';
@@ -7,6 +7,7 @@ import JSZip from 'jszip';
 import ffmpeg from 'fluent-ffmpeg';
 import ffmpegPath from 'ffmpeg-static';
 import { maybeAuthenticate } from '../middleware/auth.js';
+import type { AuthenticatedUser } from '../middleware/auth.js';
 
 const router = express.Router();
 const isLikelyText = (buf: Buffer): boolean => {
@@ -165,7 +166,7 @@ router.get('/api/formats/:fileId', async (req, res) => {
 });
 
 // Route pour convertir un fichier
-router.post('/api/convert', maybeAuthenticate, async (req, res) => {
+router.post('/api/convert', maybeAuthenticate, async (req: Request & { user?: AuthenticatedUser }, res: Response) => {
   try {
     const { fileId, targetFormat, options = {} } = req.body;
     

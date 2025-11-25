@@ -1,16 +1,12 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import multer, { File as MulterFile } from 'multer';
 import { fileTypeFromBuffer } from 'file-type';
 import mime from 'mime-types';
 import path from 'path';
 import fs from 'fs/promises';
 
-// Déclaration d'extension pour multer
-declare module 'express-serve-static-core' {
-  interface Request {
-    file?: MulterFile
-  }
-}
+// Typage local de Request pour éviter l'augmentation globale
+type UploadRequest = Request & { file?: MulterFile }
 
 const router = express.Router();
 
@@ -50,7 +46,7 @@ interface FileMetadata {
 }
 
 // Route d'upload principale
-router.post('/api/upload', upload.single('file'), async (req, res) => {
+router.post('/api/upload', upload.single('file'), async (req: UploadRequest, res: Response) => {
   try {
     if (!req.file) {
       return res.status(400).json({ error: 'Aucun fichier fourni' });

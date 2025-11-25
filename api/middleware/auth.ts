@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 // Interface pour l'utilisateur authentifié
-interface AuthenticatedUser {
+export interface AuthenticatedUser {
   id: string;
   email: string;
   plan: 'free' | 'pro' | 'premium';
@@ -11,13 +11,8 @@ interface AuthenticatedUser {
 }
 
 // Middleware pour vérifier l'authentification
-declare module 'express-serve-static-core' {
-  interface Request {
-    user?: AuthenticatedUser
-  }
-}
 
-export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
+export const authenticateToken = (req: Request & { user?: AuthenticatedUser }, res: Response, next: NextFunction) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
@@ -35,7 +30,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
 };
 
 // Middleware optionnel: n'exige pas de token; si présent et valide, attache l'utilisateur
-export const maybeAuthenticate = (req: Request, res: Response, next: NextFunction) => {
+export const maybeAuthenticate = (req: Request & { user?: AuthenticatedUser }, res: Response, next: NextFunction) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
   if (!token) return next();
@@ -49,7 +44,7 @@ export const maybeAuthenticate = (req: Request, res: Response, next: NextFunctio
 };
 
 // Middleware pour vérifier les limites de conversion (freemium)
-export const checkConversionLimit = (req: Request, res: Response, next: NextFunction) => {
+export const checkConversionLimit = (req: Request & { user?: AuthenticatedUser }, res: Response, next: NextFunction) => {
   const user = req.user;
   
   if (!user) {
@@ -74,7 +69,7 @@ export const checkConversionLimit = (req: Request, res: Response, next: NextFunc
 };
 
 // Middleware pour vérifier l'accès premium
-export const requirePremium = (req: Request, res: Response, next: NextFunction) => {
+export const requirePremium = (req: Request & { user?: AuthenticatedUser }, res: Response, next: NextFunction) => {
   const user = req.user;
   
   if (!user) {
