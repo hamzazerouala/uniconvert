@@ -22,4 +22,4 @@ COPY --from=build /app /app
 EXPOSE 3001
 
 # Start server with tsx ESM loader
-CMD ["node", "--loader", "tsx", "api/server.ts"]
+CMD ["node", "--import", "tsx", "api/server.ts"]
